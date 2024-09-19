@@ -1,4 +1,4 @@
-package com.cib.icarus.annotation.internals.spi;
+package com.cib.icarus.spi;
 
 import com.cib.icarus.spi.Ordered;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

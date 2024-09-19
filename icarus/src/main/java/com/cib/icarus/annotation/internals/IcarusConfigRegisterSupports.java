@@ -1,7 +1,7 @@
 package com.cib.icarus.annotation.internals;
 
 import com.cib.icarus.annotation.EnableIcarusConfig;
-import com.cib.icarus.annotation.internals.spi.IcarusConfigRegister;
+import com.cib.icarus.spi.IcarusConfigRegister;
 import com.cib.icarus.spi.ServiceBootstrap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
