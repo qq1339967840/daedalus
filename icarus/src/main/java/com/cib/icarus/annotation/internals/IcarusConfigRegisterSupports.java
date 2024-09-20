@@ -24,7 +24,12 @@ public class IcarusConfigRegisterSupports implements ImportBeanDefinitionRegistr
     }
 
     private void init() {
-        registers = ServiceBootstrap.loadAllOrdered(IcarusConfigRegister.class);
+        List<IcarusConfigRegister> list = ServiceBootstrap.loadAllOrdered(IcarusConfigRegister.class);
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("load IcarusConfigRegister Service failed!!!");
+        }
+
+        registers = list;
     }
 
     @Override
