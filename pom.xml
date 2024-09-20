@@ -12,6 +12,7 @@
     <modules>
         <module>demo-app</module>
         <module>icarus</module>
+        <module>icarus-core</module>
     </modules>
 
     <properties>
