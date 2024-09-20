@@ -4,11 +4,11 @@
 
     <groupId>com.cib</groupId>
     <artifactId>daedalus</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>daedalus</name>
-    <url>http://maven.apache.org</url>
+
     <modules>
         <module>demo-app</module>
         <module>icarus</module>
@@ -16,12 +16,25 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <revision>1.0.0-SNAPSHOT</revision>
+
+        <!--third party start-->
+        <guava.version>29.0-android</guava.version>
+        <!--third party end-->
+
+        <!--spring dependencies start-->
         <spring-boot.version>2.4.2</spring-boot.version>
         <spring-cloud.version>2020.0.1</spring-cloud.version>
+        <!--spring dependencies end-->
+
+        <!--spring dependencies third party start-->
+
+        <!--spring dependencies third party end-->
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -43,6 +56,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 </project>
