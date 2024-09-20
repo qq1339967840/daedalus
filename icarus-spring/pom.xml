@@ -7,7 +7,7 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>icarus</artifactId>
+    <artifactId>icarus-spring</artifactId>
     <packaging>jar</packaging>
 
     <name>icarus</name>
