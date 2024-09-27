@@ -9,10 +9,21 @@
 
     <name>daedalus</name>
 
+    <description>这是一个组件库，用来维护和处理所有的便捷组件。</description>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+
+
     <modules>
         <module>demo-app</module>
         <module>icarus-spring</module>
         <module>icarus-core</module>
+        <module>icarus-common</module>
     </modules>
 
     <properties>
