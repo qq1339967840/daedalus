@@ -25,8 +25,6 @@ public class SensitiveInfoUtils {
     /**
      * 对于超过两个字的姓名，保留首尾两个字，中间用*代替。例如，‌张无忌脱敏后变为张*忌。
      * 对于两个字的名字，保留最后一个字，第一个字用*代替。例如，‌嬴政脱敏后变为*政。
-     *
-     * @param chsName 中文名称
      */
     public static String hideChsName(String chsName) {
         if (!IcarusRegexUtils.isChsName(chsName)) {
