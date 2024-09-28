@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 
 import java.util.*;
 
-public class ServiceBootstrap {
+public class SpiLoader {
 
     public static <S> S loadFirst(Class<S> clazz) {
         Iterator<S> iterator = loadAll(clazz);
@@ -24,20 +24,12 @@ public class ServiceBootstrap {
     public static <S extends Ordered> List<S> loadAllOrdered(Class<S> clazz) {
         Iterator<S> iterator = loadAll(clazz);
         List<S> candidates = Lists.newArrayList(iterator);
-        Collections.sort(candidates, new Comparator<S>() {
-            @Override
-            public int compare(S o1, S o2) {
-                // the smaller order has higher priority
-                return Integer.compare(o1.getOrder(), o2.getOrder());
-            }
-        });
-
+        candidates.sort(Comparator.comparingInt(Ordered::getOrder));
         return candidates;
     }
 
     public static <S extends Ordered> S loadPrimary(Class<S> clazz) {
         List<S> candidates = loadAllOrdered(clazz);
-
         if (candidates.isEmpty()) {
             throw new IllegalStateException(String.format(
                     "No implementation defined in /META-INF/services/%s, please check whether the file exists and has the right implementation class!",

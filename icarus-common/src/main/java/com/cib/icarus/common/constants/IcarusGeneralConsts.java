@@ -7,5 +7,4 @@ public interface IcarusGeneralConsts {
     String STR_TO_NO = "0";
 
 
-
 }

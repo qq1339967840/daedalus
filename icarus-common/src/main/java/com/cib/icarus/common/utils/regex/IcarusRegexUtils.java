@@ -1,6 +1,12 @@
-package com.cib.icarus.common.helper.regex;
+package com.cib.icarus.common.utils.regex;
 
-public class IcarusRegexHelper {
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
+
+public class IcarusRegexUtils {
+
+    private static final Map<String, Pattern> STRING_MATCHER_MAP = new ConcurrentHashMap<>();
 
     public static boolean isMobileNo(String targetStr) {
         return match(targetStr, IcarusRegexEnum.MOBILE);
@@ -27,13 +33,19 @@ public class IcarusRegexHelper {
     }
 
     public static boolean match(String targetStr, IcarusRegexEnum regexEnum) {
-        // TODO
-        return false;
+        return getPattern(regexEnum.getRegex()).matcher(targetStr).find();
     }
 
     public static boolean match(String targetStr, String regex) {
-        // TODO
-        return false;
+        return getPattern(regex).matcher(targetStr).find();
+    }
+
+    private static Pattern getPattern(String regex) {
+        if (STRING_MATCHER_MAP.containsKey(regex)) {
+            return STRING_MATCHER_MAP.get(regex);
+        }
+        STRING_MATCHER_MAP.putIfAbsent(regex, Pattern.compile(regex));
+        return STRING_MATCHER_MAP.get(regex);
     }
 
 }
