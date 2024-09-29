@@ -17,8 +17,6 @@
         </license>
     </licenses>
 
-
-
     <modules>
         <module>demo-app</module>
         <module>icarus-spring</module>
@@ -26,11 +24,14 @@
     </modules>
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <revision>1.0.0-SNAPSHOT</revision>
 
         <!--third party start-->
-        <guava.version>29.0-android</guava.version>
+        <guava.version>32.0.0-android</guava.version>
         <!--third party end-->
 
         <!--spring dependencies start-->
@@ -45,7 +46,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

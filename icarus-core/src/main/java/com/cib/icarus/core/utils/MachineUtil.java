@@ -15,7 +15,6 @@ import java.util.Enumeration;
  */
 public class MachineUtil {
 
-
     private static final Logger logger = LoggerFactory.getLogger(MachineUtil.class);
     private static final int MACHINE_IDENTIFIER = createMachineIdentifier();
 

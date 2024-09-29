@@ -1,6 +1,6 @@
 package com.cib.icarus.core.utils;
 
-import com.cib.icarus.common.utils.io.IcarusIOHelper;
+import com.cib.icarus.core.utils.io.IcarusIOHelper;
 import com.google.common.io.CharStreams;
 
 import java.io.IOException;

@@ -1,19 +1,12 @@
 package com.cib.icarus.core.utils;
 
-import com.cib.icarus.common.utils.regex.IcarusRegexUtils;
+
+import com.cib.icarus.core.utils.regex.IcarusRegexUtils;
 
 /**
  * 协助完成敏感信息处理
  */
 public class SensitiveInfoUtils {
-
-
-    public static void main(String[] args) {
-        System.out.println(hideMobile("18392480273"));
-        System.out.println(hideChsName("郑义"));
-        System.out.println(hideChsName("涨价函"));
-        System.out.println(hideChsName("司马相如"));
-    }
 
     public static String hideMobile(String mobileNo) {
         if (!IcarusRegexUtils.isMobileNo(mobileNo)) {
@@ -21,6 +14,28 @@ public class SensitiveInfoUtils {
         }
         return hide(mobileNo, 3, 7);
     }
+
+    /**
+     * 身份证脱敏，
+     * 如果是15位身份证，脱敏[5,10)
+     * 如果是18位身份证，脱敏[6,14)
+     * 否则原样返回
+     */
+    public static String hideIdCard(String idCard) {
+        if (!IcarusRegexUtils.isIdCard(idCard)) {
+            return idCard;
+        }
+
+        if (idCard.length() == 15) {
+            return hide(idCard, 5, 10);
+        }
+
+        if (idCard.length() == 18) {
+            return hide(idCard, 6, 14);
+        }
+        return idCard;
+    }
+
 
     /**
      * 对于超过两个字的姓名，保留首尾两个字，中间用*代替。例如，‌张无忌脱敏后变为张*忌。
@@ -41,9 +56,8 @@ public class SensitiveInfoUtils {
         if (null == targetStr || targetStr.isEmpty()) {
             return targetStr;
         }
-        start = Math.min(start, targetStr.length() - 1);
-        end = Math.min(end, targetStr.length() - 1);
-
+        start = Math.max(start, 0);
+        end = Math.min(end, targetStr.length());
 
         StringBuilder sb = new StringBuilder(targetStr);
 

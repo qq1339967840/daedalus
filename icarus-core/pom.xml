@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.cib</groupId>
         <artifactId>daedalus</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>icarus-core</artifactId>
