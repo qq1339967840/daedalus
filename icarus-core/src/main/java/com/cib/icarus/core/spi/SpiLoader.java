@@ -4,6 +4,13 @@ import com.google.common.collect.Lists;
 
 import java.util.*;
 
+/**
+ * 用来帮助程序加载java-spi扩展
+ * <br/>
+ * 对于实现了{@link Ordered}的类可以按优先级返回实例对象
+ *
+ * @author goomba
+ */
 public class SpiLoader {
 
     public static <S> S loadFirst(Class<S> clazz) {

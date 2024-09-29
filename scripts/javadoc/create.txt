@@ -1,0 +1,2 @@
+ -- 生成javadoc文档
+ javadoc -encoding UTF-8 -charset UTF-8 -d D:/docs/api -sourcepath ./src/main/java -subpackages com.cib.icarus

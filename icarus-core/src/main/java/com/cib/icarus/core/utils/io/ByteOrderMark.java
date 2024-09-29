@@ -6,13 +6,19 @@ public class ByteOrderMark implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /** UTF-8 BOM */
+    /**
+     * UTF-8 BOM
+     */
     public static final ByteOrderMark UTF_8 = new ByteOrderMark("UTF-8", 0xEF, 0xBB, 0xBF);
 
-    /** UTF-16BE BOM (Big-Endian) */
+    /**
+     * UTF-16BE BOM (Big-Endian)
+     */
     public static final ByteOrderMark UTF_16BE = new ByteOrderMark("UTF-16BE", 0xFE, 0xFF);
 
-    /** UTF-16LE BOM (Little-Endian) */
+    /**
+     * UTF-16LE BOM (Little-Endian)
+     */
     public static final ByteOrderMark UTF_16LE = new ByteOrderMark("UTF-16LE", 0xFF, 0xFE);
 
     /**
@@ -40,7 +46,7 @@ public class ByteOrderMark implements Serializable {
      * Construct a new BOM.
      *
      * @param charsetName The name of the charset the BOM represents
-     * @param bytes The BOM's bytes
+     * @param bytes       The BOM's bytes
      * @throws IllegalArgumentException if the charsetName is null or zero length
      * @throws IllegalArgumentException if the bytes are null or zero length
      */

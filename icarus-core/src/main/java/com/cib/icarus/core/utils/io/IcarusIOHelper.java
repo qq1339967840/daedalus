@@ -1,8 +1,6 @@
 package com.cib.icarus.core.utils.io;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class IcarusIOHelper {
 
@@ -17,10 +15,28 @@ public class IcarusIOHelper {
         }
     }
 
+    public static void close(OutputStream io) {
+        if (io != null) {
+            try {
+                io.close();
+            } catch (IOException ignore) {
+            }
+        }
+    }
+
     public static void close(InputStreamReader isr) {
         if (isr != null) {
             try {
                 isr.close();
+            } catch (IOException ignore) {
+            }
+        }
+    }
+
+    public static void close(OutputStreamWriter osw) {
+        if (osw != null) {
+            try {
+                osw.close();
             } catch (IOException ignore) {
             }
         }

@@ -6,6 +6,9 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author goomba
+ */
 public enum IcarusDateFormatEnum {
 
     YMD_SHORT("yyyyMMdd"),
