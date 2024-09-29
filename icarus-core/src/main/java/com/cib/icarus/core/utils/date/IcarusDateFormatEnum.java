@@ -21,7 +21,7 @@ public enum IcarusDateFormatEnum {
     YMD_HMS_CHS("yyyy年MM月dd日 HH时mm分ss秒"),
 
 
-    YMD_HMS_MIS_SHORT("yyyyMMddHHmmssSSS"),
+    YMD_HMS_MIS_SHORT("yyyyMMdd HHmmssSSS"),
     YMD_HMS_MIS_MEDIUM("yyyyMMdd HH:mm:ss.SSS"),
     YMD_HMS_MIS_LONG("yyyy-MM-dd HH:mm:ss.SSS"),
     YMD_HMS_MIS_CHS("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒"),

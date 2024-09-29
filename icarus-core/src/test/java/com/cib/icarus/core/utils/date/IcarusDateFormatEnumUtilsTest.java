@@ -43,14 +43,14 @@ public class IcarusDateFormatEnumUtilsTest {
         assertEquals("2024-09-29 09:59:51", IcarusDateFormatEnum.YMD_HMS_LONG.getDateStr(timestamp));
         assertEquals("2024年09月29日 09时59分51秒", IcarusDateFormatEnum.YMD_HMS_CHS.getDateStr(timestamp));
 
-        assertEquals("20240929095951266", IcarusDateFormatEnum.YMD_HMS_MIS_SHORT.getDateStr(timestamp));
+        assertEquals("20240929 095951266", IcarusDateFormatEnum.YMD_HMS_MIS_SHORT.getDateStr(timestamp));
         assertEquals("20240929 09:59:51.266", IcarusDateFormatEnum.YMD_HMS_MIS_MEDIUM.getDateStr(timestamp));
         assertEquals("2024-09-29 09:59:51.266", IcarusDateFormatEnum.YMD_HMS_MIS_LONG.getDateStr(timestamp));
         assertEquals("2024年09月29日 09时59分51秒266毫秒", IcarusDateFormatEnum.YMD_HMS_MIS_CHS.getDateStr(timestamp));
     }
 
     @Test
-    public void testTimestamp() throws ParseException {
+    public void testTimestamp() {
         Long timestamp = 1727575191266L;
         Long startOfTs = 1727539200000L; // 2024年9月29日开始时间
 
@@ -64,11 +64,7 @@ public class IcarusDateFormatEnumUtilsTest {
         assertEquals(Long.valueOf((timestamp / 1000L) * 1000L), IcarusDateFormatEnum.YMD_HMS_LONG.getTimestamp("2024-09-29 09:59:51"));
         assertEquals(Long.valueOf((timestamp / 1000L) * 1000L), IcarusDateFormatEnum.YMD_HMS_CHS.getTimestamp("2024年09月29日 09时59分51秒"));
 
-
-        // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-        // System.out.println(simpleDateFormat.parse("20240929095951266"));
-        // TODO error code
-        assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_SHORT.getTimestamp("20240929095951266"));
+        assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_SHORT.getTimestamp("20240929 095951266"));
         assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_MEDIUM.getTimestamp("20240929 09:59:51.266"));
         assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_LONG.getTimestamp("2024-09-29 09:59:51.266"));
         assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_CHS.getTimestamp("2024年09月29日 09时59分51秒266毫秒"));
