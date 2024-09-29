@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 public class NetUtil {
 
-    private static final int DEFAULT_TIMEOUT_IN_SECONDS = 5000;
+    private static final int DEFAULT_TIMEOUT_IN_SECONDS = 60;
 
     /**
      * ping the url, return true if ping ok, false otherwise
@@ -50,8 +50,7 @@ public class NetUtil {
                 esr = new InputStreamReader(errorStream, StandardCharsets.UTF_8);
                 try {
                     String ignoreEStr = CharStreams.toString(esr);
-                } catch (IOException ioe) {
-                    //ignore
+                } catch (IOException ignore) {
                 }
             }
         } finally {

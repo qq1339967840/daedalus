@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
+
 import static org.junit.Assert.assertEquals;
 
 public class IcarusDateFormatEnumUtilsTest {
@@ -35,7 +37,7 @@ public class IcarusDateFormatEnumUtilsTest {
         assertEquals("20240929", IcarusDateFormatEnum.YMD_SHORT.getDateStr(timestamp));
         assertEquals("2024-09-29", IcarusDateFormatEnum.YMD_LONG.getDateStr(timestamp));
         assertEquals("2024年09月29日", IcarusDateFormatEnum.YMD_CHS.getDateStr(timestamp));
-        
+
         assertEquals("20240929095951", IcarusDateFormatEnum.YMD_HMS_SHORT.getDateStr(timestamp));
         assertEquals("20240929 09:59:51", IcarusDateFormatEnum.YMD_HMS_MEDIUM.getDateStr(timestamp));
         assertEquals("2024-09-29 09:59:51", IcarusDateFormatEnum.YMD_HMS_LONG.getDateStr(timestamp));
@@ -47,5 +49,37 @@ public class IcarusDateFormatEnumUtilsTest {
         assertEquals("2024年09月29日 09时59分51秒266毫秒", IcarusDateFormatEnum.YMD_HMS_MIS_CHS.getDateStr(timestamp));
     }
 
+    @Test
+    public void testTimestamp() throws ParseException {
+        Long timestamp = 1727575191266L;
+        Long startOfTs = 1727539200000L; // 2024年9月29日开始时间
+
+        assertEquals(startOfTs, IcarusDateFormatEnum.YMD_SHORT.getTimestamp("20240929"));
+        assertEquals(startOfTs, IcarusDateFormatEnum.YMD_LONG.getTimestamp("2024-09-29"));
+        assertEquals(startOfTs, IcarusDateFormatEnum.YMD_CHS.getTimestamp("2024年09月29日"));
+
+        // 精确到秒
+        assertEquals(Long.valueOf((timestamp / 1000L) * 1000L), IcarusDateFormatEnum.YMD_HMS_SHORT.getTimestamp("20240929095951"));
+        assertEquals(Long.valueOf((timestamp / 1000L) * 1000L), IcarusDateFormatEnum.YMD_HMS_MEDIUM.getTimestamp("20240929 09:59:51"));
+        assertEquals(Long.valueOf((timestamp / 1000L) * 1000L), IcarusDateFormatEnum.YMD_HMS_LONG.getTimestamp("2024-09-29 09:59:51"));
+        assertEquals(Long.valueOf((timestamp / 1000L) * 1000L), IcarusDateFormatEnum.YMD_HMS_CHS.getTimestamp("2024年09月29日 09时59分51秒"));
+
+
+        // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        // System.out.println(simpleDateFormat.parse("20240929095951266"));
+        // TODO error code
+        assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_SHORT.getTimestamp("20240929095951266"));
+        assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_MEDIUM.getTimestamp("20240929 09:59:51.266"));
+        assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_LONG.getTimestamp("2024-09-29 09:59:51.266"));
+        assertEquals(timestamp, IcarusDateFormatEnum.YMD_HMS_MIS_CHS.getTimestamp("2024年09月29日 09时59分51秒266毫秒"));
+    }
+
+    @Test
+    public void printFormatLength() {
+        IcarusDateFormatEnum[] values = IcarusDateFormatEnum.values();
+        for (IcarusDateFormatEnum en : values) {
+            logger.info("format:{} length:{}", en.getDateFormat(), en.getDateFormat().length());
+        }
+    }
 
 }

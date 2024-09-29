@@ -1,10 +1,10 @@
 package com.cib.icarus.core.utils.date;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
+import com.cib.icarus.core.consts.IcarusGeneralConsts;
+
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalField;
 
 /**
  * @author goomba
@@ -44,8 +44,23 @@ public enum IcarusDateFormatEnum {
         if (null == timestamp) {
             throw new IllegalArgumentException("timestamp must not be null!");
         }
-        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault())
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneOffset.of("+8"))
                 .format(DateTimeFormatter.ofPattern(dateFormat));
+    }
+
+    public Long getTimestamp(String dateStr) {
+        if (isLocalDateDealFormat(dateFormat)) {
+            LocalDate localDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern(dateFormat));
+            return localDate.atStartOfDay().atZone(ZoneOffset.of("+8")).toInstant().toEpochMilli();
+        }
+
+        LocalDateTime localDateTime = LocalDateTime.parse(dateStr, DateTimeFormatter.ofPattern(dateFormat));
+        return localDateTime.atZone(ZoneOffset.of("+8")).toInstant().toEpochMilli();
+    }
+
+    private boolean isLocalDateDealFormat(String dateFormat) {
+        return dateFormat.equals(YMD_SHORT.getDateFormat()) || dateFormat.equals(YMD_LONG.getDateFormat())
+                || dateFormat.equals(YMD_CHS.getDateFormat());
     }
 
 
