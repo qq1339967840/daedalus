@@ -23,7 +23,6 @@
         <module>demo-app</module>
         <module>icarus-spring</module>
         <module>icarus-core</module>
-        <module>icarus-common</module>
     </modules>
 
     <properties>
