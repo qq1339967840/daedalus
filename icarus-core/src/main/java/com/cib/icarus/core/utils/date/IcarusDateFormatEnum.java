@@ -2,9 +2,12 @@ package com.cib.icarus.core.utils.date;
 
 import com.cib.icarus.core.consts.IcarusGeneralConsts;
 
-import java.time.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalField;
+
 
 /**
  * @author goomba
@@ -28,6 +31,8 @@ public enum IcarusDateFormatEnum {
     ;
     private final String dateFormat;
 
+    private static final ZoneOffset TIME_ZONE = ZoneOffset.of("+8");
+
     IcarusDateFormatEnum(String dateFormat) {
         this.dateFormat = dateFormat;
     }
@@ -44,23 +49,22 @@ public enum IcarusDateFormatEnum {
         if (null == timestamp) {
             throw new IllegalArgumentException("timestamp must not be null!");
         }
-        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneOffset.of("+8"))
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), TIME_ZONE)
                 .format(DateTimeFormatter.ofPattern(dateFormat));
     }
 
     public Long getTimestamp(String dateStr) {
-        if (isLocalDateDealFormat(dateFormat)) {
+        if (isLocalDateDealFormat()) {
             LocalDate localDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern(dateFormat));
-            return localDate.atStartOfDay().atZone(ZoneOffset.of("+8")).toInstant().toEpochMilli();
+            return localDate.atStartOfDay().atZone(TIME_ZONE).toInstant().toEpochMilli();
         }
 
         LocalDateTime localDateTime = LocalDateTime.parse(dateStr, DateTimeFormatter.ofPattern(dateFormat));
-        return localDateTime.atZone(ZoneOffset.of("+8")).toInstant().toEpochMilli();
+        return localDateTime.atZone(TIME_ZONE).toInstant().toEpochMilli();
     }
 
-    private boolean isLocalDateDealFormat(String dateFormat) {
-        return dateFormat.equals(YMD_SHORT.getDateFormat()) || dateFormat.equals(YMD_LONG.getDateFormat())
-                || dateFormat.equals(YMD_CHS.getDateFormat());
+    private boolean isLocalDateDealFormat() {
+        return this.equals(YMD_SHORT) || this.equals(YMD_LONG) || this.equals(YMD_CHS);
     }
 
 
