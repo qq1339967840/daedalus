@@ -15,14 +15,6 @@ public class ClassLoaderUtils {
 
     private static String classPath = "";
 
-    public static void main(String[] args) {
-        System.out.println(ClassLoader.getSystemClassLoader());
-        System.out.println(Thread.currentThread().getContextClassLoader());
-        System.out.println(System.getProperty("user.dir"));
-        System.out.println(getClassPath());
-    }
-
-
     static {
         if (loader == null) {
             logger.warn("Using System class loader");

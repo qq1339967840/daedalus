@@ -1,6 +1,8 @@
 package com.cib.icarus.core.utils.regex;
 
 
+import java.util.regex.Pattern;
+
 /**
  * icarus正则表达式枚举
  *
@@ -16,11 +18,19 @@ public enum IcarusRegexEnum {
 
     private final String regex;
 
+    private final Pattern pattern;
+
     IcarusRegexEnum(String regex) {
         this.regex = regex;
+        this.pattern = Pattern.compile(regex);
     }
 
     public String getRegex() {
         return regex;
     }
+
+    public boolean match(String target) {
+        return pattern.matcher(target).find();
+    }
+
 }

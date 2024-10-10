@@ -24,6 +24,11 @@ public class MachineUtil {
 
     /**
      * Get the machine identifier from mac address
+     * 生成机器标识符
+     * 该方法基于网络接口卡（NIC）的MAC地址来构建一个2字节的机器标识符
+     * 如果无法获取MAC地址或出现异常，则生成一个随机数作为机器标识符
+     *
+     * @return 机器标识符的整数值
      *
      * @see <a href=https://github.com/mongodb/mongo-java-driver/blob/master/bson/src/main/org/bson/types/ObjectId.java>ObjectId.java</a>
      */

@@ -5,4 +5,5 @@ package com.cib.icarus.core.logger;
  * @author goomba
  */
 public class IcarusLoggerFactory {
+
 }

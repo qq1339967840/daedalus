@@ -1,7 +1,7 @@
 package com.cib.icarus.core.utils;
 
 
-import com.cib.icarus.core.utils.regex.IcarusRegexUtils;
+import com.cib.icarus.core.utils.regex.IcarusRegexEnum;
 
 /**
  * 协助完成敏感信息处理
@@ -9,9 +9,10 @@ import com.cib.icarus.core.utils.regex.IcarusRegexUtils;
 public class SensitiveInfoUtils {
 
     public static String hideMobile(String mobileNo) {
-        if (!IcarusRegexUtils.isMobileNo(mobileNo)) {
+        if (!IcarusRegexEnum.MOBILE.match(mobileNo)) {
             return mobileNo;
         }
+
         return hide(mobileNo, 3, 7);
     }
 
@@ -22,7 +23,7 @@ public class SensitiveInfoUtils {
      * 否则原样返回
      */
     public static String hideIdCard(String idCard) {
-        if (!IcarusRegexUtils.isIdCard(idCard)) {
+        if (!IcarusRegexEnum.ID_CARD.match(idCard)) {
             return idCard;
         }
 
@@ -42,7 +43,7 @@ public class SensitiveInfoUtils {
      * 对于两个字的名字，保留最后一个字，第一个字用*代替。例如，‌嬴政脱敏后变为*政。
      */
     public static String hideChsName(String chsName) {
-        if (!IcarusRegexUtils.isChsName(chsName)) {
+        if (!IcarusRegexEnum.CHS_NAME.match(chsName)) {
             return chsName;
         }
         if (chsName.length() == 2) {
