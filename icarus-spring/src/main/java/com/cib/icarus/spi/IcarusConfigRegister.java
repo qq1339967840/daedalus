@@ -1,6 +1,6 @@
 package com.cib.icarus.spi;
 
-import com.cib.icarus.spi.Ordered;
+import com.cib.icarus.core.spi.Ordered;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.core.type.AnnotationMetadata;
 

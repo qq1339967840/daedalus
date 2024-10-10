@@ -48,6 +48,27 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!--sub modules-->
+            <dependency>
+                <groupId>com.cib</groupId>
+                <artifactId>demo-app</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.cib</groupId>
+                <artifactId>icarus-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.cib</groupId>
+                <artifactId>icarus-spring</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--sub modules-->
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

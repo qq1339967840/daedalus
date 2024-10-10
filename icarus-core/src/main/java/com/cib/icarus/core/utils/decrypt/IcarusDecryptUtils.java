@@ -1,15 +1,7 @@
 package com.cib.icarus.core.utils.decrypt;
 
-import com.google.common.io.BaseEncoding;
-
-import javax.crypto.KeyGenerator;
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 
 public class IcarusDecryptUtils {
 

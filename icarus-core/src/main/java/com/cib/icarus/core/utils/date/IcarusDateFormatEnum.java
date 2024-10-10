@@ -1,7 +1,5 @@
 package com.cib.icarus.core.utils.date;
 
-import com.cib.icarus.core.consts.IcarusGeneralConsts;
-
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -63,7 +61,7 @@ public enum IcarusDateFormatEnum {
         return localDateTime.atZone(TIME_ZONE).toInstant().toEpochMilli();
     }
 
-    private boolean isLocalDateDealFormat() {
+    public boolean isLocalDateDealFormat() {
         return this.equals(YMD_SHORT) || this.equals(YMD_LONG) || this.equals(YMD_CHS);
     }
 

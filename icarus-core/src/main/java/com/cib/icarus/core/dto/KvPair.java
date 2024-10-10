@@ -5,33 +5,33 @@ import java.util.Objects;
 /**
  * 键值对
  */
-public class KvPair<T> {
+public class KvPair<K, V> {
 
-    private String key;
+    private K key;
 
-    private T value;
+    private V value;
 
     public KvPair() {
     }
 
-    public KvPair(String key, T value) {
+    public KvPair(K key, V value) {
         this.key = key;
         this.value = value;
     }
 
-    public String getKey() {
+    public K getKey() {
         return key;
     }
 
-    public T getValue() {
+    public V getValue() {
         return value;
     }
 
-    public void setKey(String key) {
+    public void setKey(K key) {
         this.key = key;
     }
 
-    public void setValue(T value) {
+    public void setValue(V value) {
         this.value = value;
     }
 
@@ -39,7 +39,7 @@ public class KvPair<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        KvPair<?> kvPair = (KvPair<?>) o;
+        KvPair<?, ?> kvPair = (KvPair<?, ?>) o;
         return Objects.equals(key, kvPair.key) && Objects.equals(value, kvPair.value);
     }
 
@@ -51,8 +51,9 @@ public class KvPair<T> {
     @Override
     public String toString() {
         return "KvPair{" +
-                "key='" + key + '\'' +
+                "key=" + key +
                 ", value=" + value +
                 '}';
     }
+
 }
