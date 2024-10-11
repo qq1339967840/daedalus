@@ -6,18 +6,23 @@
     <artifactId>daedalus</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-
-    <name>daedalus</name>
-
-
-    <url>https://gitee.com/zhengyigitee/daedalus.git</url>
+    <name>Daedalus</name>
     <description>这是一个组件库，包含了基础j2ee组件以及Spring适配组件</description>
+    <url>https://gitee.com/zhengyigitee/daedalus.git</url>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
+
+
+    <issueManagement>
+        <system>gitee</system>
+        <url>https://gitee.com/zhengyigitee/daedalus/issues</url>
+    </issueManagement>
+
 
     <modules>
         <module>demo-app</module>
