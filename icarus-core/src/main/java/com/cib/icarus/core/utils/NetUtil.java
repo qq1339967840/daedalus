@@ -15,7 +15,11 @@ public class NetUtil {
     private static final int DEFAULT_TIMEOUT_IN_SECONDS = 60;
 
     /**
-     * ping the url, return true if ping ok, false otherwise
+     * 该函数用于检测URL是否可访问。主要功能包括：
+     * 使用给定地址创建URL对象。
+     * 打开连接并设置请求方法为GET。
+     * 禁用缓存和设置超时时间。
+     * 获取响应状态码，并在状态码为200到399之间时返回true，表示请求成功。若过程中出现异常，则返回false。
      */
     public static boolean pingUrl(String address) {
         try {

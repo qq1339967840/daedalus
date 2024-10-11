@@ -8,6 +8,8 @@ import java.time.format.DateTimeFormatter;
 
 
 /**
+ * 常见的日期格式枚举，并且包含了一些便捷操作的方法
+ *
  * @author goomba
  */
 public enum IcarusDateFormatEnum {

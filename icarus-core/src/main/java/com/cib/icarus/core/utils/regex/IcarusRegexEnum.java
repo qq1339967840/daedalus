@@ -33,4 +33,8 @@ public enum IcarusRegexEnum {
         return pattern.matcher(target).find();
     }
 
+    public boolean notMatch(String target) {
+        return !match(target);
+    }
+
 }

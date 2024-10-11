@@ -9,7 +9,7 @@ import com.cib.icarus.core.utils.regex.IcarusRegexEnum;
 public class SensitiveInfoUtils {
 
     public static String hideMobile(String mobileNo) {
-        if (!IcarusRegexEnum.MOBILE.match(mobileNo)) {
+        if (IcarusRegexEnum.MOBILE.notMatch(mobileNo)) {
             return mobileNo;
         }
 
@@ -17,13 +17,16 @@ public class SensitiveInfoUtils {
     }
 
     /**
-     * 身份证脱敏，
-     * 如果是15位身份证，脱敏[5,10)
-     * 如果是18位身份证，脱敏[6,14)
-     * 否则原样返回
+     * 身份证脱敏方法
+     * 根据身份证的长度，对身份证号码进行不同位置的脱敏处理
+     * 脱敏规则：15位身份证脱敏从第6位到第10位，18位身份证脱敏从第7位到第14位
+     * 其他长度的身份证号码则原样返回
+     *
+     * @param idCard 身份证号码字符串
+     * @return 脱敏后的身份证号码字符串
      */
     public static String hideIdCard(String idCard) {
-        if (!IcarusRegexEnum.ID_CARD.match(idCard)) {
+        if (IcarusRegexEnum.ID_CARD.notMatch(idCard)) {
             return idCard;
         }
 
@@ -43,7 +46,7 @@ public class SensitiveInfoUtils {
      * 对于两个字的名字，保留最后一个字，第一个字用*代替。例如，‌嬴政脱敏后变为*政。
      */
     public static String hideChsName(String chsName) {
-        if (!IcarusRegexEnum.CHS_NAME.match(chsName)) {
+        if (IcarusRegexEnum.CHS_NAME.notMatch(chsName)) {
             return chsName;
         }
         if (chsName.length() == 2) {
