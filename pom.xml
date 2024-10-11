@@ -9,7 +9,9 @@
 
     <name>daedalus</name>
 
-    <description>这是一个组件库，用来维护和处理所有的便捷组件。</description>
+
+    <url>https://gitee.com/zhengyigitee/daedalus.git</url>
+    <description>这是一个组件库，包含了基础j2ee组件以及Spring适配组件</description>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
