@@ -44,6 +44,13 @@
         <!--spring dependencies third party start-->
 
         <!--spring dependencies third party end-->
+
+        <!--plugins versions start-->
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
+
+        <!--plugins versions end-->
+
     </properties>
 
     <dependencyManagement>
@@ -106,4 +113,58 @@
             <version>${guava.version}</version>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <!--https://blog.csdn.net/gitblog_00805/article/details/141847344-->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>timestamp-property</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>timestamp-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>build.time</name>
+                            <pattern>yyyyMMdd HH:mm:ss</pattern>
+                            <locale>zh_CN</locale>
+                            <timeZone>GMT+8</timeZone>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <!--添加生成java包后的主清单文件(MANIFEST)中的属性-->
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Author>goomba</Author>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <Build-Time>${build.time}</Build-Time>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+
+            </plugin>
+        </plugins>
+
+        <!--最终包名-->
+        <finalName>${project.artifactId}-${revision}</finalName>
+    </build>
+
 </project>
