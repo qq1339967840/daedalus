@@ -1,4 +1,4 @@
-package com.cib.icarus.core.utils.date;
+package com.cib.icarus.core.enums;
 
 import java.time.Instant;
 import java.time.LocalDate;

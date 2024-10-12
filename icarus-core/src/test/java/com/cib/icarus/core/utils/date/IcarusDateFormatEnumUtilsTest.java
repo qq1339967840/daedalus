@@ -1,5 +1,6 @@
 package com.cib.icarus.core.utils.date;
 
+import com.cib.icarus.core.enums.IcarusDateFormatEnum;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

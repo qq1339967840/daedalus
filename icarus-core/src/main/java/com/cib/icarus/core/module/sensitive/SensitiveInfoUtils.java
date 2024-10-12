@@ -1,7 +1,7 @@
 package com.cib.icarus.core.module.sensitive;
 
 
-import com.cib.icarus.core.utils.regex.IcarusRegexEnum;
+import com.cib.icarus.core.enums.IcarusRegexEnum;
 
 /**
  * 协助完成敏感信息处理

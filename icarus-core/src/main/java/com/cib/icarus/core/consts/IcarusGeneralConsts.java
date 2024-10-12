@@ -1,6 +1,6 @@
 package com.cib.icarus.core.consts;
 
-import com.cib.icarus.core.utils.date.IcarusDateFormatEnum;
+import com.cib.icarus.core.enums.IcarusDateFormatEnum;
 
 /**
  * @author goomba

@@ -1,4 +1,4 @@
-package com.cib.icarus.core.utils.regex;
+package com.cib.icarus.core.enums;
 
 
 import java.util.regex.Pattern;
