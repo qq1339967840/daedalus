@@ -1,13 +1,9 @@
 package com.cib.icarus.core.utils;
 
+import com.cib.icarus.core.module.sensitive.SensitiveInfoUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.helpers.FormattingTuple;
-import org.slf4j.helpers.MessageFormatter;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,28 +36,28 @@ public class SensitiveInfoUtilsTest {
         // 阿瓦达索命 length = 13
         String targetStr = "Avada Kedavra";
 
-        assertEquals("A***a Kedavra", SensitiveInfoUtils.hide(targetStr, 1, 4));
+        assertEquals("A***a Kedavra", SensitiveInfoUtils.hide(targetStr,  '*',1, 4));
 
         // start & end above boundary
-        assertEquals("*************", SensitiveInfoUtils.hide(targetStr, -1, 15));
+        assertEquals("*************", SensitiveInfoUtils.hide(targetStr,  '*',-1, 15));
 
         // start above boundary
-        assertEquals("************a", SensitiveInfoUtils.hide(targetStr, -1, 12));
+        assertEquals("************a", SensitiveInfoUtils.hide(targetStr,  '*',-1, 12));
 
         // end above boundary
-        assertEquals("A************", SensitiveInfoUtils.hide(targetStr, 1, 15));
+        assertEquals("A************", SensitiveInfoUtils.hide(targetStr,  '*',1, 15));
 
         // start & end in boundary
-        assertEquals("*************", SensitiveInfoUtils.hide(targetStr, 0, 13));
+        assertEquals("*************", SensitiveInfoUtils.hide(targetStr,  '*',0, 13));
 
         // start in boundary
-        assertEquals("**********vra", SensitiveInfoUtils.hide(targetStr, 0, 10));
+        assertEquals("**********vra", SensitiveInfoUtils.hide(targetStr,  '*',0, 10));
 
         // end in boundary
-        assertEquals("Avad*********", SensitiveInfoUtils.hide(targetStr, 4, 13));
+        assertEquals("Avad*********", SensitiveInfoUtils.hide(targetStr, '*', 4, 13));
 
         // start & end fall on  interval
-        assertEquals("Avad******vra", SensitiveInfoUtils.hide(targetStr, 4, 10));
+        assertEquals("Avad******vra", SensitiveInfoUtils.hide(targetStr,  '*',4, 10));
     }
 
 }

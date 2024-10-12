@@ -1,4 +1,4 @@
-package com.cib.icarus.core.utils;
+package com.cib.icarus.core.module.sensitive;
 
 
 import com.cib.icarus.core.utils.regex.IcarusRegexEnum;
@@ -9,11 +9,15 @@ import com.cib.icarus.core.utils.regex.IcarusRegexEnum;
 public class SensitiveInfoUtils {
 
     public static String hideMobile(String mobileNo) {
+        return hideMobile(mobileNo, '*');
+    }
+
+    public static String hideMobile(String mobileNo, char placeholder) {
         if (IcarusRegexEnum.MOBILE.notMatch(mobileNo)) {
             return mobileNo;
         }
 
-        return hide(mobileNo, 3, 7);
+        return hide(mobileNo, placeholder, 3, 7);
     }
 
     /**
@@ -26,20 +30,23 @@ public class SensitiveInfoUtils {
      * @return 脱敏后的身份证号码字符串
      */
     public static String hideIdCard(String idCard) {
+        return hideIdCard(idCard, '*');
+    }
+
+    public static String hideIdCard(String idCard, char placeholder) {
         if (IcarusRegexEnum.ID_CARD.notMatch(idCard)) {
             return idCard;
         }
 
         if (idCard.length() == 15) {
-            return hide(idCard, 5, 10);
+            return hide(idCard, placeholder, 5, 10);
         }
 
         if (idCard.length() == 18) {
-            return hide(idCard, 6, 14);
+            return hide(idCard, placeholder, 6, 14);
         }
         return idCard;
     }
-
 
     /**
      * 对于超过两个字的姓名，保留首尾两个字，中间用*代替。例如，‌张无忌脱敏后变为张*忌。
@@ -50,25 +57,29 @@ public class SensitiveInfoUtils {
             return chsName;
         }
         if (chsName.length() == 2) {
-            return hide(chsName, 0, 1);
+            return hide(chsName, '*', 0, 1);
         }
-        return hide(chsName, 1, chsName.length() - 1);
+        return hide(chsName, '*', 1, chsName.length() - 1);
     }
 
 
-    public static String hide(String targetStr, int start, int end) {
-        if (null == targetStr || targetStr.isEmpty()) {
-            return targetStr;
+    public static String hide(final String source, char placeholder, int start, int end) {
+        if (null == source || source.isEmpty()) {
+            return source;
         }
         start = Math.max(start, 0);
-        end = Math.min(end, targetStr.length());
+        end = Math.min(end, source.length());
 
-        StringBuilder sb = new StringBuilder(targetStr);
+        StringBuilder sb = new StringBuilder(source);
 
         for (int i = start; i < end; i++) {
-            sb.setCharAt(i, '*');
+            sb.setCharAt(i, placeholder);
         }
         return sb.toString();
+    }
+
+    public static String patternReplace(final String content, String replace, String pattern) {
+        return content.replaceAll(pattern, replace);
     }
 
 
