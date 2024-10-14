@@ -39,7 +39,7 @@ public class DesensitizationHelper {
             throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         SensitiveStrategy sensitiveStrategy = strategySensitive.strategy().getDeclaredConstructor().newInstance();
         char placeholder = strategySensitive.placeholder();
-        return sensitiveStrategy.doDesensitization(source, placeholder);
+        return sensitiveStrategy.desensitization(source, placeholder);
     }
 
 
