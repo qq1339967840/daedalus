@@ -1,4 +1,4 @@
-package com.cib.icarus.core.logger.deferred;
+package com.cib.icarus.core.module.logger.deferred;
 
 import org.slf4j.Logger;
 import org.slf4j.Marker;

@@ -1,5 +1,6 @@
 package com.cib.icarus.core.module.sensitive.annotation;
 
+import com.cib.icarus.core.consts.IcarusGeneralConsts;
 import com.cib.icarus.core.module.sensitive.strategy.NoneSensitiveStrategy;
 import com.cib.icarus.core.module.sensitive.strategy.SensitiveStrategy;
 
@@ -19,6 +20,6 @@ public @interface StrategySensitive {
 
     Class<? extends SensitiveStrategy> strategy() default NoneSensitiveStrategy.class;
 
-    char placeholder() default '*';
+    char placeholder() default IcarusGeneralConsts.DEFAULT_PLACEHOLDER_CHAR;
 
 }

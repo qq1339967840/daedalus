@@ -1,4 +1,4 @@
-package com.cib.icarus.core.utils.id;
+package com.cib.icarus.core.utils;
 
 
 /**

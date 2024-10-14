@@ -1,4 +1,4 @@
-package com.cib.icarus.core.logger.deferred;
+package com.cib.icarus.core.module.logger.deferred;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;

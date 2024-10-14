@@ -1,6 +1,6 @@
-package com.cib.icarus.core.logger;
+package com.cib.icarus.core.module.logger;
 
-import com.cib.icarus.core.logger.deferred.DeferredLogger;
+import com.cib.icarus.core.module.logger.deferred.DeferredLogger;
 import org.slf4j.LoggerFactory;
 
 /**

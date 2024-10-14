@@ -4,8 +4,6 @@ import com.cib.icarus.core.module.sensitive.annotation.BitSensitive;
 import com.cib.icarus.core.module.sensitive.annotation.PatternSensitive;
 import com.cib.icarus.core.module.sensitive.annotation.StrategySensitive;
 import com.cib.icarus.core.utils.ClassUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.reflections.ReflectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,15 +53,6 @@ public interface SensitiveWrapper {
             }
             return newArray;
         }
-
-//        if (Iterable.class.isAssignableFrom(object.getClass())) {
-//            Iterable<?> iterable = (Iterable<?>) object;
-//            List<Object> resultList = new ArrayList<>();
-//            for (Object item : iterable) {
-//                resultList.add(doSensitive(item));
-//            }
-//            return resultList;
-//        }
 
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {

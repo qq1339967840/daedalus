@@ -1,9 +1,9 @@
-package com.cib.icarus.core.utils.id;
+package com.cib.icarus.core.utils;
 
 import java.security.SecureRandom;
 import java.util.UUID;
 
-public class IcarusIdUtils {
+public class IdUtils {
 
     /**
      * @return 获取一个全局唯一的标识符（UUID）并且去掉-

@@ -17,4 +17,9 @@ public interface IcarusGeneralConsts {
 
     Long MAX_YMD_DATE_TIMESTAMP = MAX_YMD_DATE_FORMAT.getTimestamp(MAX_YMD_DATE_STR);
 
+
+    String DEFAULT_PLACEHOLDER_STR = "*";
+
+    char DEFAULT_PLACEHOLDER_CHAR = '*';
+
 }
