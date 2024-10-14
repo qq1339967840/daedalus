@@ -5,11 +5,27 @@ import com.cib.icarus.core.module.sensitive.annotation.BitSensitive;
 import com.cib.icarus.core.module.sensitive.annotation.PatternSensitive;
 import com.cib.icarus.core.module.sensitive.annotation.StrategySensitive;
 import com.cib.icarus.core.module.sensitive.strategy.SensitiveStrategy;
+import com.cib.icarus.core.utils.ClassUtils;
 import com.cib.icarus.core.utils.StrUtils;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 public class DesensitizationHelper {
+
+    public static boolean notDesensitizationClassType(Object object) {
+        return null == object
+                || ClassUtils.isPrimitiveType(object.getClass())
+                || ClassUtils.isPackageType(object.getClass());
+    }
+
+    public static boolean notDesensitizationFieldType(Field field) {
+        return  null == field
+                || Class.class.isAssignableFrom(field.getType())
+                || ClassUtils.isPrimitiveType(field.getType())
+                || ClassUtils.isPackageType(field.getType());
+    }
+
 
     /**
      * @param source 源数据
