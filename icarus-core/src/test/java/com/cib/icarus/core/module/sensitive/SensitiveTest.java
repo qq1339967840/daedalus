@@ -17,5 +17,4 @@ public class SensitiveTest {
         System.out.println(sensitiveDTO);
     }
 
-
 }
