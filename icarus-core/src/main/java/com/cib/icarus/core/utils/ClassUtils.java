@@ -1,5 +1,8 @@
 package com.cib.icarus.core.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class ClassUtils {
 
     public static boolean isPackageType(Class<?> clazz) {
@@ -12,6 +15,17 @@ public class ClassUtils {
 
     public static boolean isPrimitiveType(Class<?> clazz) {
         return clazz.isPrimitive();
+    }
+
+    public static Object newInstance(Object object) {
+        ObjectMapper mapper = new ObjectMapper();
+        String json;
+        try {
+            json = mapper.writeValueAsString(object);
+            return mapper.readValue(json, object.getClass());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

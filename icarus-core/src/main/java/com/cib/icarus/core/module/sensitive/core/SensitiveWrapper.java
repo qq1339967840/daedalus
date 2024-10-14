@@ -3,6 +3,9 @@ package com.cib.icarus.core.module.sensitive.core;
 import com.cib.icarus.core.module.sensitive.annotation.BitSensitive;
 import com.cib.icarus.core.module.sensitive.annotation.PatternSensitive;
 import com.cib.icarus.core.module.sensitive.annotation.StrategySensitive;
+import com.cib.icarus.core.utils.ClassUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.reflections.ReflectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +21,18 @@ public interface SensitiveWrapper {
 
     default Object sensitive(Object object) {
         try {
-            // TODO 该类需要进行深拷贝
-            // Object newObject = object.getClass().newInstance();
-            // BeanUtils.copyProperties(object, newObject);
-            return doSensitive(object);
+            // 处理迭代器模式相关的
+            if (Iterable.class.isAssignableFrom(object.getClass())) {
+                Iterable<?> iterable = (Iterable<?>) object;
+                List<Object> resultList = new ArrayList<>();
+                for (Object item : iterable) {
+                    resultList.add(sensitive(item));
+                }
+                return resultList;
+            }
+
+            Object newObject = ClassUtils.newInstance(object);
+            return doSensitive(newObject);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException |
                  InstantiationException e) {
             throw new RuntimeException(e);
@@ -35,6 +46,24 @@ public interface SensitiveWrapper {
         if (DesensitizationHelper.notDesensitizationClassType(object)) {
             return object;
         }
+
+        if (object.getClass().isArray()) {
+            Object[] array = (Object[]) object;
+            Object[] newArray = Arrays.copyOf(array, array.length);
+            for (int i = 0; i < array.length; i++) {
+                newArray[i] = doSensitive(array[i]);
+            }
+            return newArray;
+        }
+
+//        if (Iterable.class.isAssignableFrom(object.getClass())) {
+//            Iterable<?> iterable = (Iterable<?>) object;
+//            List<Object> resultList = new ArrayList<>();
+//            for (Object item : iterable) {
+//                resultList.add(doSensitive(item));
+//            }
+//            return resultList;
+//        }
 
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
