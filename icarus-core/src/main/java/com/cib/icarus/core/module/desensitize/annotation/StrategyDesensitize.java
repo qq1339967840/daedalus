@@ -1,8 +1,8 @@
-package com.cib.icarus.core.module.sensitive.annotation;
+package com.cib.icarus.core.module.desensitize.annotation;
 
 import com.cib.icarus.core.consts.IcarusGeneralConsts;
-import com.cib.icarus.core.module.sensitive.strategy.NoneSensitiveStrategy;
-import com.cib.icarus.core.module.sensitive.strategy.SensitiveStrategy;
+import com.cib.icarus.core.module.desensitize.strategy.SensitiveStrategy;
+import com.cib.icarus.core.module.desensitize.strategy.NoneSensitiveStrategy;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -16,7 +16,7 @@ import java.lang.annotation.RetentionPolicy;
 @Inherited
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StrategySensitive {
+public @interface StrategyDesensitize {
 
     Class<? extends SensitiveStrategy> strategy() default NoneSensitiveStrategy.class;
 

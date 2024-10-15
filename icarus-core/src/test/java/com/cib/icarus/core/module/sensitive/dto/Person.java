@@ -1,16 +1,16 @@
 package com.cib.icarus.core.module.sensitive.dto;
 
-import com.cib.icarus.core.module.sensitive.annotation.internals.DefaultIdCardSensitive;
-import com.cib.icarus.core.module.sensitive.annotation.internals.DefaultMobileSensitive;
+import com.cib.icarus.core.module.desensitize.annotation.internals.IdCardDesensitize;
+import com.cib.icarus.core.module.desensitize.annotation.internals.MobileDesensitize;
 
 public class Person {
 
     private String name;
 
-    @DefaultMobileSensitive
+    @MobileDesensitize
     private String mobileNo;
 
-    @DefaultIdCardSensitive
+    @IdCardDesensitize
     private String idCard;
 
     public Person() {

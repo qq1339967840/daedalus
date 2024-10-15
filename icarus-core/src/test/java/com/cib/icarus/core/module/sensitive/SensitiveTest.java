@@ -1,6 +1,6 @@
 package com.cib.icarus.core.module.sensitive;
 
-import com.cib.icarus.core.module.sensitive.core.ObjectWrapper;
+import com.cib.icarus.core.module.desensitize.core.ObjectWrapper;
 import com.cib.icarus.core.module.sensitive.dto.Company;
 import com.cib.icarus.core.module.sensitive.dto.Person;
 import org.junit.Test;

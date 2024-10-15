@@ -1,10 +1,10 @@
-package com.cib.icarus.core.module.sensitive.core;
+package com.cib.icarus.core.module.desensitize.core;
 
-import com.cib.icarus.core.module.sensitive.SensitiveInfoUtils;
-import com.cib.icarus.core.module.sensitive.annotation.BitSensitive;
-import com.cib.icarus.core.module.sensitive.annotation.PatternSensitive;
-import com.cib.icarus.core.module.sensitive.annotation.StrategySensitive;
-import com.cib.icarus.core.module.sensitive.strategy.SensitiveStrategy;
+import com.cib.icarus.core.module.desensitize.SensitiveInfoUtils;
+import com.cib.icarus.core.module.desensitize.annotation.BitDesensitize;
+import com.cib.icarus.core.module.desensitize.annotation.PatternDesensitize;
+import com.cib.icarus.core.module.desensitize.annotation.StrategyDesensitize;
+import com.cib.icarus.core.module.desensitize.strategy.SensitiveStrategy;
 import com.cib.icarus.core.utils.ClassUtils;
 import com.cib.icarus.core.utils.StrUtils;
 
@@ -35,24 +35,24 @@ public class DesensitizationHelper {
         return !StrUtils.isBlank(source) && !"null".equals(source);
     }
 
-    public static String desensitization(final String source, StrategySensitive strategySensitive)
+    public static String desensitization(final String source, StrategyDesensitize strategyDesensitize)
             throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        SensitiveStrategy sensitiveStrategy = strategySensitive.strategy().getDeclaredConstructor().newInstance();
-        char placeholder = strategySensitive.placeholder();
+        SensitiveStrategy sensitiveStrategy = strategyDesensitize.strategy().getDeclaredConstructor().newInstance();
+        char placeholder = strategyDesensitize.placeholder();
         return sensitiveStrategy.desensitization(source, placeholder);
     }
 
 
-    public static String desensitizationByBit(final String source, BitSensitive bitSensitive) {
-        char placeholder = bitSensitive.placeholder();
-        int begin = bitSensitive.startBit();
-        int end = bitSensitive.endBit();
+    public static String desensitizationByBit(final String source, BitDesensitize bitDesensitize) {
+        char placeholder = bitDesensitize.placeholder();
+        int begin = bitDesensitize.startBit();
+        int end = bitDesensitize.endBit();
         return desensitizationByBit(source, placeholder, begin, end);
     }
 
-    public static String desensitizationByPattern(String source, PatternSensitive patternSensitive) {
-        String placeholder = patternSensitive.placeholder();
-        String pattern = patternSensitive.pattern();
+    public static String desensitizationByPattern(String source, PatternDesensitize patternDesensitize) {
+        String placeholder = patternDesensitize.placeholder();
+        String pattern = patternDesensitize.pattern();
         return desensitizationByPattern(source, placeholder, pattern);
     }
 

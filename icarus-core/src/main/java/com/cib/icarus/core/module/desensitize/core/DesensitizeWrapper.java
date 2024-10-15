@@ -1,8 +1,8 @@
-package com.cib.icarus.core.module.sensitive.core;
+package com.cib.icarus.core.module.desensitize.core;
 
-import com.cib.icarus.core.module.sensitive.annotation.BitSensitive;
-import com.cib.icarus.core.module.sensitive.annotation.PatternSensitive;
-import com.cib.icarus.core.module.sensitive.annotation.StrategySensitive;
+import com.cib.icarus.core.module.desensitize.annotation.BitDesensitize;
+import com.cib.icarus.core.module.desensitize.annotation.PatternDesensitize;
+import com.cib.icarus.core.module.desensitize.annotation.StrategyDesensitize;
 import com.cib.icarus.core.utils.ClassUtils;
 import org.reflections.ReflectionUtils;
 import org.slf4j.Logger;
@@ -13,9 +13,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-public interface SensitiveWrapper {
+public interface DesensitizeWrapper {
 
-    Logger logger = LoggerFactory.getLogger(SensitiveWrapper.class);
+    Logger logger = LoggerFactory.getLogger(DesensitizeWrapper.class);
 
     default Object sensitive(Object object) {
         try {
@@ -74,19 +74,19 @@ public interface SensitiveWrapper {
             String sensitive = source;
 
             // 依次加载策略注解 StrategySensitive -> BitSensitive -> PatternSensitive。如果同時存在后面的会覆盖前面的值
-            StrategySensitive strategySensitive = getAnnotation(field, StrategySensitive.class);
-            if (strategySensitive != null) {
-                sensitive = DesensitizationHelper.desensitization(source, strategySensitive);
+            StrategyDesensitize strategyDesensitize = getAnnotation(field, StrategyDesensitize.class);
+            if (strategyDesensitize != null) {
+                sensitive = DesensitizationHelper.desensitization(source, strategyDesensitize);
             }
 
-            BitSensitive bitSensitive = getAnnotation(field, BitSensitive.class);
-            if (bitSensitive != null) {
-                sensitive = DesensitizationHelper.desensitizationByBit(source, bitSensitive);
+            BitDesensitize bitDesensitize = getAnnotation(field, BitDesensitize.class);
+            if (bitDesensitize != null) {
+                sensitive = DesensitizationHelper.desensitizationByBit(source, bitDesensitize);
             }
 
-            PatternSensitive patternSensitive = getAnnotation(field, PatternSensitive.class);
-            if (patternSensitive != null) {
-                sensitive = DesensitizationHelper.desensitizationByPattern(source, patternSensitive);
+            PatternDesensitize patternDesensitize = getAnnotation(field, PatternDesensitize.class);
+            if (patternDesensitize != null) {
+                sensitive = DesensitizationHelper.desensitizationByPattern(source, patternDesensitize);
             }
 
             field.set(object, sensitive);

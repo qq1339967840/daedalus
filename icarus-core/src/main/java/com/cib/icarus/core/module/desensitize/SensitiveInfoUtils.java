@@ -1,4 +1,4 @@
-package com.cib.icarus.core.module.sensitive;
+package com.cib.icarus.core.module.desensitize;
 
 
 import com.cib.icarus.core.enums.IcarusRegexEnum;
