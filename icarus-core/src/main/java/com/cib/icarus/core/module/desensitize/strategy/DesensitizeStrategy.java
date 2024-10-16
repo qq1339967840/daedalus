@@ -1,6 +1,6 @@
 package com.cib.icarus.core.module.desensitize.strategy;
 
-import com.cib.icarus.core.module.desensitize.core.DesensitizationHelper;
+import com.cib.icarus.core.module.desensitize.DesensitizationHelper;
 
 /**
  * 脱敏策略接口

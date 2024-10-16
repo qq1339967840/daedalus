@@ -1,4 +1,4 @@
-package com.cib.icarus.core.module.desensitize.core;
+package com.cib.icarus.core.module.desensitize;
 
 import com.cib.icarus.core.module.desensitize.annotation.BitDesensitize;
 import com.cib.icarus.core.module.desensitize.annotation.PatternDesensitize;

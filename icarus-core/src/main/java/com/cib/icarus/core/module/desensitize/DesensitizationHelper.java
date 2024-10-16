@@ -1,6 +1,6 @@
-package com.cib.icarus.core.module.desensitize.core;
+package com.cib.icarus.core.module.desensitize;
 
-import com.cib.icarus.core.module.desensitize.DesensitizeInfoUtils;
+import com.cib.icarus.core.utils.DesensitizeInfoUtils;
 import com.cib.icarus.core.module.desensitize.annotation.BitDesensitize;
 import com.cib.icarus.core.module.desensitize.annotation.PatternDesensitize;
 import com.cib.icarus.core.module.desensitize.annotation.StrategyDesensitize;

@@ -1,6 +1,6 @@
 package com.cib.icarus.core.module.logger.desensitize;
 
-import com.cib.icarus.core.module.desensitize.core.ObjectWrapper;
+import com.cib.icarus.core.module.desensitize.ObjectWrapper;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 
