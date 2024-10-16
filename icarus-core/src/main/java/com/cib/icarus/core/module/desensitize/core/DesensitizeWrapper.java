@@ -17,20 +17,20 @@ public interface DesensitizeWrapper {
 
     Logger logger = LoggerFactory.getLogger(DesensitizeWrapper.class);
 
-    default Object sensitive(Object object) {
+    default Object desensitize(Object object) {
         try {
             // 处理迭代器模式相关的
             if (Iterable.class.isAssignableFrom(object.getClass())) {
                 Iterable<?> iterable = (Iterable<?>) object;
                 List<Object> resultList = new ArrayList<>();
                 for (Object item : iterable) {
-                    resultList.add(sensitive(item));
+                    resultList.add(desensitize(item));
                 }
                 return resultList;
             }
 
             Object newObject = ClassUtils.newInstance(object);
-            return doSensitive(newObject);
+            return doDesensitize(newObject);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException |
                  InstantiationException e) {
             throw new RuntimeException(e);
@@ -38,7 +38,7 @@ public interface DesensitizeWrapper {
     }
 
 
-    default Object doSensitive(Object object) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+    default Object doDesensitize(Object object) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 
         // if null or primitive type or package type, return directly
         if (DesensitizationHelper.notDesensitizationClassType(object)) {
@@ -49,7 +49,7 @@ public interface DesensitizeWrapper {
             Object[] array = (Object[]) object;
             Object[] newArray = Arrays.copyOf(array, array.length);
             for (int i = 0; i < array.length; i++) {
-                newArray[i] = doSensitive(array[i]);
+                newArray[i] = doDesensitize(array[i]);
             }
             return newArray;
         }
@@ -107,7 +107,7 @@ public interface DesensitizeWrapper {
             }
             Object[] newArray = Arrays.copyOf(array, array.length);
             for (int i = 0; i < array.length; i++) {
-                newArray[i] = doSensitive(array[i]);
+                newArray[i] = doDesensitize(array[i]);
             }
             field.set(object, newArray);
             return;
@@ -121,13 +121,13 @@ public interface DesensitizeWrapper {
             }
             List<Object> resultList = new ArrayList<>();
             for (Object item : iterable) {
-                resultList.add(doSensitive(item));
+                resultList.add(doDesensitize(item));
             }
             field.set(object, resultList);
             return;
         }
 
-        Object res = doSensitive(field.get(object));
+        Object res = doDesensitize(field.get(object));
         field.set(object, res);
     }
 

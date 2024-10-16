@@ -1,6 +1,7 @@
 package com.cib.icarus.core.module.logger;
 
 import com.cib.icarus.core.module.logger.deferred.DeferredLogger;
+import com.cib.icarus.core.module.logger.desensitize.DesensitizeLogger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -16,6 +17,14 @@ public class IcarusLoggerFactory {
 
     public static DeferredLogger getDeferredLogger(String name) {
         return new DeferredLogger(LoggerFactory.getLogger(name));
+    }
+
+    public static DesensitizeLogger getDesensitizeLogger(Class<?> clazz) {
+        return new DesensitizeLogger(LoggerFactory.getLogger(clazz));
+    }
+
+    public static DesensitizeLogger getDesensitizeLogger(String name) {
+        return new DesensitizeLogger(LoggerFactory.getLogger(name));
     }
 
 

@@ -13,7 +13,7 @@ public class SensitiveTest {
     public void dealObject() {
         Company company = getCompany();
         ObjectWrapper wrapper = new ObjectWrapper();
-        System.out.println(wrapper.sensitive(company));
+        System.out.println(wrapper.desensitize(company));
         System.out.println(company);
     }
 
@@ -21,7 +21,7 @@ public class SensitiveTest {
     public void dealList() throws Exception {
         Company company = getCompany();
         ObjectWrapper wrapper = new ObjectWrapper();
-        System.out.println(wrapper.sensitive(company.getEmployees()));
+        System.out.println(wrapper.desensitize(company.getEmployees()));
         System.out.println(company.getEmployees());
     }
 
@@ -30,7 +30,7 @@ public class SensitiveTest {
     public void dealArray() {
         Company company = getCompany();
         ObjectWrapper wrapper = new ObjectWrapper();
-        Person[] peoples = (Person[]) wrapper.sensitive(company.getOthers());
+        Person[] peoples = (Person[]) wrapper.desensitize(company.getOthers());
         System.out.println(Arrays.toString(peoples));
         System.out.println(Arrays.toString(company.getOthers()));
     }
