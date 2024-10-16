@@ -11,7 +11,8 @@
 * 通过注册SpringBoot来进行加载某一功能的插件。
 
 #### 开发任务计划
-    1. 实现脱敏日志。对于常见的敏感数据进行日志脱敏。
+
+    1. 实现脱敏日志。对于常见的敏感数据进行日志脱敏。 √
     2. 实现Spring-Boot-Web,XSS攻击注入拦截防护
     3. 实现Spring-Boot-Web,Controller模块的数据统计。
     4. 实现Spring endpoint 暴漏数据。

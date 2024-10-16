@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.cib.icarus.utils;
+package com.cib.icarus.spring.utils;
 
 import java.util.Map;
 import java.util.Objects;

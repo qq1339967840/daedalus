@@ -1,4 +1,4 @@
-package com.cib.icarus.spi;
+package com.cib.icarus.spring.adpater.spi;
 
 import com.cib.icarus.core.spi.Ordered;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

@@ -1,12 +1,11 @@
-package com.cib.icarus.spi.impl;
+package com.cib.icarus.spring.adpater.spi.internals;
 
 import com.cib.icarus.core.spi.Ordered;
-import com.cib.icarus.spi.IcarusConfigRegister;
+import com.cib.icarus.spring.adpater.spi.IcarusConfigRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.util.ReflectionUtils;
 
 public class DefaultConfigRegister implements IcarusConfigRegister {
 

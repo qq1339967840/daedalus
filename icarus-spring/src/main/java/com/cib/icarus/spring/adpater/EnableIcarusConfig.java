@@ -1,6 +1,5 @@
-package com.cib.icarus.annotation;
+package com.cib.icarus.spring.adpater;
 
-import com.cib.icarus.annotation.internals.IcarusConfigRegisterSupports;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -12,6 +11,9 @@ import java.lang.annotation.*;
 @Import(IcarusConfigRegisterSupports.class)
 public @interface EnableIcarusConfig {
 
+    /**
+     * @return module name. 将要引入哪些模块
+     */
     String[] value() default {};
 
 

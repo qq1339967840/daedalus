@@ -1,4 +1,4 @@
-package com.cib.icarus.module.xss;
+package com.cib.icarus.spring.module.xss;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
