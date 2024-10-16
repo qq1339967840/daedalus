@@ -6,7 +6,7 @@ import com.cib.icarus.core.enums.IcarusRegexEnum;
 /**
  * 协助完成敏感信息处理
  */
-public class SensitiveInfoUtils {
+public class DesensitizeInfoUtils {
 
     public static String hideMobile(String mobileNo) {
         return hideMobile(mobileNo, '*');
@@ -48,18 +48,22 @@ public class SensitiveInfoUtils {
         return idCard;
     }
 
+    public static String hideChsName(String chsName, char placeholder) {
+        if (IcarusRegexEnum.CHS_NAME.notMatch(chsName)) {
+            return chsName;
+        }
+        if (chsName.length() == 2) {
+            return hide(chsName, placeholder, 0, 1);
+        }
+        return hide(chsName, placeholder, 1, chsName.length() - 1);
+    }
+
     /**
      * 对于超过两个字的姓名，保留首尾两个字，中间用*代替。例如，‌张无忌脱敏后变为张*忌。
      * 对于两个字的名字，保留最后一个字，第一个字用*代替。例如，‌嬴政脱敏后变为*政。
      */
     public static String hideChsName(String chsName) {
-        if (IcarusRegexEnum.CHS_NAME.notMatch(chsName)) {
-            return chsName;
-        }
-        if (chsName.length() == 2) {
-            return hide(chsName, '*', 0, 1);
-        }
-        return hide(chsName, '*', 1, chsName.length() - 1);
+        return hideChsName(chsName, '*');
     }
 
 

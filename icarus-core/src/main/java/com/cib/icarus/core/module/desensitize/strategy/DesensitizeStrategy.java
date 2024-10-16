@@ -5,7 +5,7 @@ import com.cib.icarus.core.module.desensitize.core.DesensitizationHelper;
 /**
  * 脱敏策略接口
  */
-public abstract class SensitiveStrategy {
+public abstract class DesensitizeStrategy {
 
     public final String desensitization(final String source, final char placeholder) {
         if (!DesensitizationHelper.canDesensitization(source)) {

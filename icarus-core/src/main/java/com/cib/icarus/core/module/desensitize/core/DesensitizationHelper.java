@@ -1,10 +1,10 @@
 package com.cib.icarus.core.module.desensitize.core;
 
-import com.cib.icarus.core.module.desensitize.SensitiveInfoUtils;
+import com.cib.icarus.core.module.desensitize.DesensitizeInfoUtils;
 import com.cib.icarus.core.module.desensitize.annotation.BitDesensitize;
 import com.cib.icarus.core.module.desensitize.annotation.PatternDesensitize;
 import com.cib.icarus.core.module.desensitize.annotation.StrategyDesensitize;
-import com.cib.icarus.core.module.desensitize.strategy.SensitiveStrategy;
+import com.cib.icarus.core.module.desensitize.strategy.DesensitizeStrategy;
 import com.cib.icarus.core.utils.ClassUtils;
 import com.cib.icarus.core.utils.StrUtils;
 
@@ -37,9 +37,9 @@ public class DesensitizationHelper {
 
     public static String desensitization(final String source, StrategyDesensitize strategyDesensitize)
             throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        SensitiveStrategy sensitiveStrategy = strategyDesensitize.strategy().getDeclaredConstructor().newInstance();
+        DesensitizeStrategy desensitizeStrategy = strategyDesensitize.strategy().getDeclaredConstructor().newInstance();
         char placeholder = strategyDesensitize.placeholder();
-        return sensitiveStrategy.desensitization(source, placeholder);
+        return desensitizeStrategy.desensitization(source, placeholder);
     }
 
 
@@ -60,14 +60,14 @@ public class DesensitizationHelper {
         if (!canDesensitization(source)) {
             return source;
         }
-        return SensitiveInfoUtils.hide(source, placeholder, begin, end);
+        return DesensitizeInfoUtils.hide(source, placeholder, begin, end);
     }
 
     public static String desensitizationByPattern(String source, String placeholder, String pattern) {
         if (!canDesensitization(source) || StrUtils.isBlank(pattern)) {
             return source;
         }
-        return SensitiveInfoUtils.patternReplace(source, placeholder, pattern);
+        return DesensitizeInfoUtils.patternReplace(source, placeholder, pattern);
     }
 
 

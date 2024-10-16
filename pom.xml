@@ -56,7 +56,7 @@
         <!--plugins versions start-->
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
-
+        <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
         <!--plugins versions end-->
 
     </properties>
@@ -130,6 +130,12 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+            </plugin>
 
             <plugin>
                 <!--https://blog.csdn.net/gitblog_00805/article/details/141847344-->
