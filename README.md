@@ -13,9 +13,10 @@
 #### 开发任务计划
 
     1. 实现脱敏日志。对于常见的敏感数据进行日志脱敏。 √
-    2. 实现Spring-Boot-Web,XSS攻击注入拦截防护
-    3. 实现Spring-Boot-Web,Controller模块的数据统计。
-    4. 实现Spring endpoint 暴漏数据。
+    2. 实现Spring-Boot-Web,XSS攻击注入拦截防护        xss
+    3. 实现Spring-Boot-Web,Controller模块的数据统计。 stat ---> 统计调用次数。统计平均运行时间。统计最大运行时间。统计最小运行时间。调用成功失败率
+    4. 数据进入controller之后进行打印运行时间。         log_time  --> 打印运行时间。 打印出入参数(Jackson JSON)。
+    5. ratelimiter限流。                           对于单一接口进行熔断限流配置。
     5. 实现实时读取本地配置文件。修改配置文件后，自动生效。
     6. 发布1.0.0版本包含以上功能。
 

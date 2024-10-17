@@ -1,6 +1,7 @@
 package com.cib.icarus.core.utils;
 
 
+import com.cib.icarus.core.consts.IcarusGeneralConsts;
 import com.cib.icarus.core.enums.IcarusRegexEnum;
 
 /**
@@ -9,7 +10,7 @@ import com.cib.icarus.core.enums.IcarusRegexEnum;
 public class DesensitizeInfoUtils {
 
     public static String hideMobile(String mobileNo) {
-        return hideMobile(mobileNo, '*');
+        return hideMobile(mobileNo, IcarusGeneralConsts.DEFAULT_PLACEHOLDER_CHAR);
     }
 
     public static String hideMobile(String mobileNo, char placeholder) {
@@ -30,7 +31,7 @@ public class DesensitizeInfoUtils {
      * @return 脱敏后的身份证号码字符串
      */
     public static String hideIdCard(String idCard) {
-        return hideIdCard(idCard, '*');
+        return hideIdCard(idCard, IcarusGeneralConsts.DEFAULT_PLACEHOLDER_CHAR);
     }
 
     public static String hideIdCard(String idCard, char placeholder) {
@@ -63,7 +64,7 @@ public class DesensitizeInfoUtils {
      * 对于两个字的名字，保留最后一个字，第一个字用*代替。例如，‌嬴政脱敏后变为*政。
      */
     public static String hideChsName(String chsName) {
-        return hideChsName(chsName, '*');
+        return hideChsName(chsName, IcarusGeneralConsts.DEFAULT_PLACEHOLDER_CHAR);
     }
 
 
