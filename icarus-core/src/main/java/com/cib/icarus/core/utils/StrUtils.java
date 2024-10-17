@@ -3,7 +3,16 @@ package com.cib.icarus.core.utils;
 public class StrUtils {
 
     public static boolean isBlank(String str) {
-        return str == null || str.trim().isEmpty();
+        int strLen;
+        if (str == null || (strLen = str.length()) == 0) {
+            return true;
+        }
+        for (int i = 0; i < strLen; i++) {
+            if (!Character.isWhitespace(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -17,4 +26,17 @@ public class StrUtils {
         return str1.equals(str2);
     }
 
+
+    public static boolean isNumeric(String str) {
+        if (str == null) {
+            return false;
+        }
+        int sz = str.length();
+        for (int i = 0; i < sz; i++) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
