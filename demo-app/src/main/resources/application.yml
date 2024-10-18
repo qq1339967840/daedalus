@@ -3,3 +3,11 @@ server:
 spring:
   application:
     name: daedalus-demo
+
+xss:
+  illegal:
+    attack:
+      chars:
+        - "123"
+        - "456"
+        - "789"

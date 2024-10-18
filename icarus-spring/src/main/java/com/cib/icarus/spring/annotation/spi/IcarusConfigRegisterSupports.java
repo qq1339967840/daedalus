@@ -1,7 +1,7 @@
-package com.cib.icarus.spring.adpater;
+package com.cib.icarus.spring.annotation.spi;
 
 import com.cib.icarus.core.spi.SpiLoader;
-import com.cib.icarus.spring.adpater.spi.IcarusConfigRegister;
+import com.cib.icarus.spring.annotation.EnableIcarusConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -38,18 +38,18 @@ public class IcarusConfigRegisterSupports implements ImportBeanDefinitionRegistr
                 .fromMap(importingClassMetadata.getAnnotationAttributes(EnableIcarusConfig.class.getName()));
 
         if (null == attributes) {
-            logger.warn("【IcarusConfigRegister can't scan EnableIcarusConfig.class AnnotationAttributes】");
+            logger.warn("【IcarusConfigRegister】 can't scan EnableIcarusConfig.class AnnotationAttributes");
             return;
         }
 
         final String[] modules = attributes.getStringArray("value");
 
-        logger.info("【IcarusConfigRegister scan modules {}, stared deal with register.】", Arrays.asList(modules));
+        logger.info("【IcarusConfigRegister】 scan modules {}, stared deal with register.", Arrays.asList(modules));
 
         for (String module : modules) {
             for (IcarusConfigRegister register : registers) {
                 if (register.support(module)) {
-                    logger.info("【IcarusConfigRegister {} deal with module {}】", register.getClass(), module);
+                    logger.info("【IcarusConfigRegister】 【{}】 deal with module 【{}】", register.getClass(), module);
                     register.registerBeanDefinitions(importingClassMetadata, registry);
                 }
             }

@@ -1,5 +1,6 @@
-package com.cib.icarus.spring.adpater;
+package com.cib.icarus.spring.annotation;
 
+import com.cib.icarus.spring.annotation.spi.IcarusConfigRegisterSupports;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

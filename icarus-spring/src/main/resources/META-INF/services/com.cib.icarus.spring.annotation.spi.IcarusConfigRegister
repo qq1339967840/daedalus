@@ -1,0 +1,2 @@
+com.cib.icarus.spring.annotation.spi.internals.DefaultConfigRegister
+com.cib.icarus.spring.annotation.spi.internals.XssAttackConfigRegister

@@ -1,6 +1,8 @@
 package com.cib.demo.app;
 
 
+import com.cib.icarus.spring.annotation.EnableIcarusConfig;
+import com.cib.icarus.spring.annotation.IcarusSpringConsts;
 import com.google.common.base.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
+@EnableIcarusConfig(value = {IcarusSpringConsts.XSS_ATTACK_MODULE_NAME})
 public class DemoApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);

@@ -1,7 +1,7 @@
-package com.cib.icarus.spring.adpater.spi.internals;
+package com.cib.icarus.spring.annotation.spi.internals;
 
 import com.cib.icarus.core.spi.Ordered;
-import com.cib.icarus.spring.adpater.spi.IcarusConfigRegister;
+import com.cib.icarus.spring.annotation.spi.IcarusConfigRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
