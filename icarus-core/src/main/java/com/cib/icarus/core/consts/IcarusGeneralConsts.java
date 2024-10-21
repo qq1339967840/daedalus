@@ -22,4 +22,8 @@ public interface IcarusGeneralConsts {
 
     char DEFAULT_PLACEHOLDER_CHAR = '*';
 
+    String EMPTY_STR = "";
+
+    String BLANK_STR = " ";
+
 }
