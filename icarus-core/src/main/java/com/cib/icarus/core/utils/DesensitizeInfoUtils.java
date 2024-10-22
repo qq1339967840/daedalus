@@ -8,6 +8,19 @@ import com.cib.icarus.core.enums.IcarusRegexEnum;
  * 协助完成敏感信息处理
  */
 public class DesensitizeInfoUtils {
+    
+    public static String hideEmail(String target) {
+        return hideEmail(target, IcarusGeneralConsts.DEFAULT_PLACEHOLDER_STR);
+    }
+
+    public static String hideEmail(String target, String placeholder) {
+        if (IcarusRegexEnum.EMAIL.notMatch(target)) {
+            return target;
+        }
+        String patternStr = "^(^\\w{1,2})(\\w+)@(.*)(\\..*$)";
+        String replaceStr = "$1" + placeholder + placeholder + placeholder + placeholder + "$3$4";
+        return patternReplace(target, replaceStr, patternStr);
+    }
 
     public static String hideMobile(String mobileNo) {
         return hideMobile(mobileNo, IcarusGeneralConsts.DEFAULT_PLACEHOLDER_CHAR);
@@ -83,7 +96,7 @@ public class DesensitizeInfoUtils {
         return sb.toString();
     }
 
-    public static String patternReplace(final String content, String replace, String pattern) {
+    public static String patternReplace(String content, String replace, String pattern) {
         return content.replaceAll(pattern, replace);
     }
 

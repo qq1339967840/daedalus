@@ -54,7 +54,7 @@ public class IcarusEncryptUtils {
      * 使用 SHA-256 算法对字符串进行哈希
      *
      * @param target 待哈希的字符串
-     * @return 哈希后的MD5字符串
+     * @return 哈希后的SHA-256字符串
      */
     public static String sha256(String target) {
         return hash(target, "sha-256");
